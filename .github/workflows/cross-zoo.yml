@@ -84,7 +84,7 @@ jobs:
 
     - name: Build
       run: |
-        make CC=${{ matrix.platform.arch }}-gcc TARGET=linux-glibc USE_LIBCRYPT=
+        make ERR=1 CC=${{ matrix.platform.arch }}-gcc TARGET=linux-glibc USE_LIBCRYPT=
 
 
 
