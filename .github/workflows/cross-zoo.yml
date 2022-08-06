@@ -1,0 +1,90 @@
+
+name: Cross Compile
+
+on: [push]
+
+jobs:
+  cross-compilation:
+    strategy:
+      matrix:
+        platform: [
+          {
+            arch: aarch64-linux-gnu,
+            libs: libc6-dev-arm64-cross
+          }, {
+            arch: alpha-linux-gnu,
+            libs: libc6.1-dev-alpha-cross
+          }, {
+            arch: arm-linux-gnueabi,
+            libs: libc6-dev-armel-cross
+          }, {
+            arch: arm-linux-gnueabihf,
+            libs: libc6-dev-armhf-cross
+          }, {
+            arch: hppa-linux-gnu,
+            libs: libc6-dev-hppa-cross
+          }, {
+            arch: m68k-linux-gnu,
+            libs: libc6-dev-m68k-cross
+          }, {
+            arch: mips-linux-gnu,
+            libs: libc6-dev-mips-cross
+          }, {
+            arch: mips64-linux-gnuabi64,
+            libs: libc6-dev-mips64-cross
+          }, {
+            arch: mipsel-linux-gnu,
+            libs: libc6-dev-mipsel-cross
+          }, {
+            arch: powerpc64le-linux-gnu,
+            libs: libc6-dev-ppc64el-cross
+          }, {
+            arch: riscv64-linux-gnu,
+            libs: libc6-dev-riscv64-cross
+          }, {
+            arch: s390x-linux-gnu,
+            libs: libc6-dev-s390x-cross
+          }, {
+            arch: sh4-linux-gnu,
+            libs: libc6-dev-sh4-cross
+          },
+
+          # These build with shared libraries but they crash when run
+          # They mirror static builds above in order to cover more of the
+          # code base.
+          {
+            arch: hppa-linux-gnu,
+            libs: libc6-dev-hppa-cross
+          }, {
+            arch: m68k-linux-gnu,
+            libs: libc6-dev-m68k-cross
+          }, {
+            arch: mips-linux-gnu,
+            libs: libc6-dev-mips-cross
+          }, {
+            arch: mips64-linux-gnuabi64,
+            libs: libc6-dev-mips64-cross
+          },
+
+          # This build doesn't execute either with or without shared libraries.
+          {
+            arch: sparc64-linux-gnu,
+            libs: libc6-dev-sparc64-cross
+          }
+        ]
+    runs-on: ubuntu-latest
+    steps:
+    - name: install packages
+      run: |
+        sudo apt-get update
+        sudo apt-get -yq --force-yes install \
+            gcc-${{ matrix.platform.arch }} \
+            ${{ matrix.platform.libs }}
+    - uses: actions/checkout@v2
+
+    - name: Build
+      run: |
+        make CC=${{ matrix.platform.arch }}-gcc TARGET=linux-glibc
+
+
+
