@@ -4855,7 +4855,7 @@ static int quic_generate_retry_token_aad(unsigned char *aad,
 
 /* QUIC server only function.
  * Generate the token to be used in Retry packets. The token is written to
- * <buf> whith <len> as length. <odcid> is the original destination connection
+ * <buf> with <len> as length. <odcid> is the original destination connection
  * ID and <dcid> is our side destination connection ID (or client source
  * connection ID).
  * Returns the length of the encoded token or 0 on error.
