@@ -12,41 +12,41 @@ jobs:
             arch: aarch64-linux-gnu,
             libs: libc6-dev-arm64-cross
           }, {
-            arch: alpha-linux-gnu,
-            libs: libc6.1-dev-alpha-cross
-          }, {
-            arch: arm-linux-gnueabi,
-            libs: libc6-dev-armel-cross
-          }, {
-            arch: arm-linux-gnueabihf,
-            libs: libc6-dev-armhf-cross
-          }, {
+            #  arch: alpha-linux-gnu,
+            #libs: libc6.1-dev-alpha-cross
+            #}, {
+            #arch: arm-linux-gnueabi,
+            #libs: libc6-dev-armel-cross
+            #}, {
+            #            arch: arm-linux-gnueabihf,
+            #libs: libc6-dev-armhf-cross
+            #}, {
             arch: hppa-linux-gnu,
             libs: libc6-dev-hppa-cross
           }, {
-            arch: m68k-linux-gnu,
-            libs: libc6-dev-m68k-cross
-          }, {
+            #  arch: m68k-linux-gnu,
+            #libs: libc6-dev-m68k-cross
+            #}, {
             arch: mips-linux-gnu,
             libs: libc6-dev-mips-cross
           }, {
-            arch: mips64-linux-gnuabi64,
-            libs: libc6-dev-mips64-cross
-          }, {
-            arch: mipsel-linux-gnu,
-            libs: libc6-dev-mipsel-cross
-          }, {
+            #arch: mips64-linux-gnuabi64,
+            #libs: libc6-dev-mips64-cross
+            #}, {
+            #arch: mipsel-linux-gnu,
+            #libs: libc6-dev-mipsel-cross
+            #}, {
             arch: powerpc64le-linux-gnu,
             libs: libc6-dev-ppc64el-cross
           }, {
-            arch: riscv64-linux-gnu,
-            libs: libc6-dev-riscv64-cross
-          }, {
+            #arch: riscv64-linux-gnu,
+            #libs: libc6-dev-riscv64-cross
+            #}, {
             arch: s390x-linux-gnu,
             libs: libc6-dev-s390x-cross
-          }, {
-            arch: sh4-linux-gnu,
-            libs: libc6-dev-sh4-cross
+            #}, {
+            #arch: sh4-linux-gnu,
+            #libs: libc6-dev-sh4-cross
           },
 
           # These build with shared libraries but they crash when run
@@ -56,12 +56,12 @@ jobs:
             arch: hppa-linux-gnu,
             libs: libc6-dev-hppa-cross
           }, {
-            arch: m68k-linux-gnu,
-            libs: libc6-dev-m68k-cross
-          }, {
-            arch: mips-linux-gnu,
-            libs: libc6-dev-mips-cross
-          }, {
+            #arch: m68k-linux-gnu,
+            #libs: libc6-dev-m68k-cross
+            #}, {
+            #arch: mips-linux-gnu,
+            #libs: libc6-dev-mips-cross
+            #}, {
             arch: mips64-linux-gnuabi64,
             libs: libc6-dev-mips64-cross
           },
