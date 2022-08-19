@@ -18,9 +18,9 @@ jobs:
             #arch: arm-linux-gnueabi,
             #libs: libc6-dev-armel-cross
             #}, {
-            #            arch: arm-linux-gnueabihf,
-            #libs: libc6-dev-armhf-cross
-            #}, {
+            arch: arm-linux-gnueabihf,
+            libs: libc6-dev-armhf-cross
+            }, {
             arch: hppa-linux-gnu,
             libs: libc6-dev-hppa-cross
           }, {
