@@ -10,7 +10,8 @@ jobs:
         platform: [
           {
             arch: aarch64-linux-gnu,
-            libs: libc6-dev-arm64-cross
+            libs: libc6-dev-arm64-cross,
+            target: linux-aarch64
           }, {
             #  arch: alpha-linux-gnu,
             #libs: libc6.1-dev-alpha-cross
@@ -19,16 +20,19 @@ jobs:
             #libs: libc6-dev-armel-cross
             #}, {
             arch: arm-linux-gnueabihf,
-            libs: libc6-dev-armhf-cross
+            libs: libc6-dev-armhf-cross,
+            target: linux-armv4
             }, {
             arch: hppa-linux-gnu,
-            libs: libc6-dev-hppa-cross
+            libs: libc6-dev-hppa-cross,
+            target: -static linux-generic32
           }, {
             #  arch: m68k-linux-gnu,
             #libs: libc6-dev-m68k-cross
             #}, {
             arch: mips-linux-gnu,
-            libs: libc6-dev-mips-cross
+            libs: libc6-dev-mips-cross,
+            target: -static linux-mips32
           }, {
             #arch: mips64-linux-gnuabi64,
             #libs: libc6-dev-mips64-cross
@@ -37,13 +41,15 @@ jobs:
             #libs: libc6-dev-mipsel-cross
             #}, {
             arch: powerpc64le-linux-gnu,
-            libs: libc6-dev-ppc64el-cross
+            libs: libc6-dev-ppc64el-cross,
+            target: linux-ppc64le
           }, {
             #arch: riscv64-linux-gnu,
             #libs: libc6-dev-riscv64-cross
             #}, {
             arch: s390x-linux-gnu,
-            libs: libc6-dev-s390x-cross
+            libs: libc6-dev-s390x-cross,
+            target: linux64-s390x
             #}, {
             #arch: sh4-linux-gnu,
             #libs: libc6-dev-sh4-cross
@@ -54,7 +60,8 @@ jobs:
           # code base.
           {
             arch: hppa-linux-gnu,
-            libs: libc6-dev-hppa-cross
+            libs: libc6-dev-hppa-cross,
+            target: linux-generic32,
           }, {
             #arch: m68k-linux-gnu,
             #libs: libc6-dev-m68k-cross
@@ -63,13 +70,15 @@ jobs:
             #libs: libc6-dev-mips-cross
             #}, {
             arch: mips64-linux-gnuabi64,
-            libs: libc6-dev-mips64-cross
+            libs: libc6-dev-mips64-cross,
+            target: linux64-mips64
           },
 
           # This build doesn't execute either with or without shared libraries.
           {
             arch: sparc64-linux-gnu,
-            libs: libc6-dev-sparc64-cross
+            libs: libc6-dev-sparc64-cross,
+            target: linux64-sparcv9
           }
         ]
     runs-on: ubuntu-latest
@@ -82,9 +91,14 @@ jobs:
             ${{ matrix.platform.libs }}
     - uses: actions/checkout@v2
 
+
+    - name: install quictls
+      run: |
+        QUICTLS_EXTRA_ARGS="--cross-compile-prefix=${{ matrix.platform.arch }}- ${{ matrix.platform.target }}" QUICTLS=yes scripts/build-ssl.sh
+
     - name: Build
       run: |
-        make ERR=1 CC=${{ matrix.platform.arch }}-gcc TARGET=linux-glibc USE_LIBCRYPT=
+        make ERR=1 CC=${{ matrix.platform.arch }}-gcc TARGET=linux-glibc USE_LIBCRYPT= USE_OPENSSL=1 USE_QUIC=1 SSL_LIB=${HOME}/opt/lib SSL_INC=${HOME}/opt/include ADDLIB="-Wl,-rpath,${HOME}/opt/lib"
 
 
 
