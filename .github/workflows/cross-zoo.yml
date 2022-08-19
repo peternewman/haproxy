@@ -107,7 +107,7 @@ jobs:
 
     - name: Build
       run: |
-        make ERR=1 CC=${{ matrix.platform.arch }}-gcc TARGET=linux-glibc USE_LIBCRYPT= USE_OPENSSL=1 USE_QUIC=1 SSL_LIB=${HOME}/opt/lib SSL_INC=${HOME}/opt/include ADDLIB="-Wl,-rpath,${HOME}/opt/lib"
+        make ERR=1 CC=${{ matrix.platform.arch }}-gcc TARGET=linux-glibc USE_LIBCRYPT= USE_OPENSSL=1 USE_QUIC=1 USE_PROMEX=1 SSL_LIB=${HOME}/opt/lib SSL_INC=${HOME}/opt/include ADDLIB="-Wl,-rpath,${HOME}/opt/lib"
 
 
 
