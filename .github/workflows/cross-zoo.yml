@@ -38,10 +38,10 @@ jobs:
             #            libs: libc6-dev-m68k-cross,
             #            target: -static -m68040 linux-latomic
             #          }, {
-            arch: mips-linux-gnu,
-            libs: libc6-dev-mips-cross,
-            target: -static linux-mips32
-          }, {
+            #            arch: mips-linux-gnu,
+            #            libs: libc6-dev-mips-cross,
+            #            target: -static linux-mips32
+            #          }, {
             arch: mips64-linux-gnuabi64,
             libs: libc6-dev-mips64-cross,
             target: -static linux64-mips64
