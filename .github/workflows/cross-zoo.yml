@@ -34,10 +34,10 @@ jobs:
             libs: libc6-dev-hppa-cross,
             target: -static linux-generic32
           }, {
-            arch: m68k-linux-gnu,
-            libs: libc6-dev-m68k-cross,
-            target: -static -m68040 linux-latomic
-          }, {
+            #            arch: m68k-linux-gnu,
+            #            libs: libc6-dev-m68k-cross,
+            #            target: -static -m68040 linux-latomic
+            #          }, {
             arch: mips-linux-gnu,
             libs: libc6-dev-mips-cross,
             target: -static linux-mips32
@@ -70,10 +70,10 @@ jobs:
             libs: libc6-dev-hppa-cross,
             target: linux-generic32,
           }, {
-            arch: m68k-linux-gnu,
-            libs: libc6-dev-m68k-cross,
-            target: -mcfv4e linux-latomic
-          }, {
+            #            arch: m68k-linux-gnu,
+            #            libs: libc6-dev-m68k-cross,
+            #            target: -mcfv4e linux-latomic
+            #          }, {
             arch: mips-linux-gnu,
             libs: libc6-dev-mips-cross,
             target: linux-mips32
