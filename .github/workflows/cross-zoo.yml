@@ -30,10 +30,10 @@ jobs:
             libs: libc6-dev-armhf-cross,
             target: linux-armv4
           }, {
-            arch: hppa-linux-gnu,
-            libs: libc6-dev-hppa-cross,
-            target: -static linux-generic32
-          }, {
+            #            arch: hppa-linux-gnu,
+            #            libs: libc6-dev-hppa-cross,
+            #            target: -static linux-generic32
+            #          }, {
             #            arch: m68k-linux-gnu,
             #            libs: libc6-dev-m68k-cross,
             #            target: -static -m68040 linux-latomic
@@ -66,10 +66,10 @@ jobs:
             libs: libc6-dev-sh4-cross,
             target: no-async linux-latomic
           }, {
-            arch: hppa-linux-gnu,
-            libs: libc6-dev-hppa-cross,
-            target: linux-generic32,
-          }, {
+            #            arch: hppa-linux-gnu,
+            #            libs: libc6-dev-hppa-cross,
+            #            target: linux-generic32,
+            #          }, {
             #            arch: m68k-linux-gnu,
             #            libs: libc6-dev-m68k-cross,
             #            target: -mcfv4e linux-latomic
