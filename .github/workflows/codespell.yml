@@ -2,6 +2,7 @@ name: Spelling Check
 
 on:
   push:
+  pull_request:
 
 permissions:
   contents: read
